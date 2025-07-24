@@ -1,16 +1,19 @@
 import streamlit as st
 
+# "Nice. Now, on the \"________ to Heaven\", the number of a cubed triangle, you'll find the next clue."
+# "Look to the east, and seek the piece, seated in the tree, to find your peace at least."
+
 LEVELS = [
-    {"puzzle": "What kind of trees are all around us?", "code": "jeffrey pines", "hint": "They're not Ponderosas."},
-    {"puzzle": "Nice. Now, on the \"________ to heaven\", the number of a cubed triangle, you'll find the next clue.", "code": "test", "hint": "it's a song. and don't square the number"},
-    {"puzzle": "", "code": "test", "hint": "Hint for Puzzle 3"},
-    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 4"},
-    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 5"},
-    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 6"},
-    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 7"},
-    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 8"},
-    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 9"},
-    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 10"},
+    {"puzzle": "What kind of trees are all around us?", "code": "jeffrey pines"},
+    {"puzzle": "This place is special. Over this many million years has this lake been around.", "code": "2"},
+    {"puzzle": "", "code": "test"},
+    {"puzzle": "", "code": " "},
+    {"puzzle": "", "code": " "},
+    {"puzzle": "", "code": " "},
+    {"puzzle": "", "code": " "},
+    {"puzzle": "", "code": " "},
+    {"puzzle": "", "code": " "},
+    {"puzzle": "", "code": " "},
 ]
 
 FAMILY_PROFILES = [
@@ -189,9 +192,8 @@ else:
     if st.session_state.clear_code_input:
         st.session_state.clear_code_input = False
     st.markdown("<div style='height: 0.5em'></div>", unsafe_allow_html=True)
-    show_hint_btn = st.button("Show Hint", key=f"show_hint_btn_{current_level}")
     if code:
-        if code == level_info["code"]:
+        if code.strip().lower() == level_info["code"].strip().lower():
             st.session_state.level += 1
             st.session_state.feedback = f"🎉 Nice work {st.session_state.username}! 🎉"
             st.session_state.show_hint = False
@@ -210,8 +212,4 @@ else:
             st.session_state.celebrate = False 
         else:
             st.info(st.session_state.feedback)
-    if show_hint_btn:
-        st.session_state.show_hint = True
-    if st.session_state.show_hint:
-        st.warning(level_info["hint"])
     st.markdown("<div style='height: 1em'></div>", unsafe_allow_html=True)
