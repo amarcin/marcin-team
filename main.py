@@ -1,11 +1,8 @@
-# Basic Streamlit app
-
 import streamlit as st
 
-# Tahoe puzzle levels and codes (placeholder, fill in real codes and hints later)
 LEVELS = [
     {"puzzle": "What kind of trees are all around us?", "code": "jeffrey pines", "hint": "They're not Ponderosas."},
-    {"puzzle": "Nice. Now, on the "________ to heaven", the number of a cubed triangle, you'll find the next clue.", "code": "test", "hint": "it's a song. and don't square the number"},
+    {"puzzle": "Nice. Now, on the \"________ to heaven\", the number of a cubed triangle, you'll find the next clue.", "code": "test", "hint": "it's a song. and don't square the number"},
     {"puzzle": "", "code": "test", "hint": "Hint for Puzzle 3"},
     {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 4"},
     {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 5"},
@@ -16,7 +13,6 @@ LEVELS = [
     {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 10"},
 ]
 
-# Family profiles
 FAMILY_PROFILES = [
     {
         "display_name": "Dad",
@@ -24,7 +20,7 @@ FAMILY_PROFILES = [
         "role": "Trail Medic",
         "emoji1": "🩺",
         "emoji2": "👨‍⚕️",
-        "desc": "Will undoubtedly provide a monotone diagnosis of the fun times",
+        "desc": "Will provide a monotone diagnosis of the family trip.",
     },
     {
         "display_name": "Maret",
@@ -40,7 +36,7 @@ FAMILY_PROFILES = [
         "role": "AI Navigator",
         "emoji1": "🤖",
         "emoji2": "🧠",
-        "desc": "Will undoubtedly try to automate the solution",
+        "desc": "Busy spending 3 hours automating a 3 second task",
     },
     {
         "display_name": "Adrienne",
@@ -56,7 +52,7 @@ FAMILY_PROFILES = [
         "role": "Forest Freestyler",
         "emoji1": "🏀",
         "emoji2": "⛰️",
-        "desc": "Sacramento's own action hero, unstoppable on the court and a little lost in the wilderness.",
+        "desc": "Thinks \"trail mix\" is a Spotify playlist.",
     },
     {
         "display_name": "Hayden",
@@ -70,7 +66,6 @@ FAMILY_PROFILES = [
 
 st.set_page_config(page_title="Lake Tahoe Puzzle Tracker", page_icon="🧩", layout="wide")
 
-# Add top-right user badge if logged in
 if "profile" in st.session_state and st.session_state.profile:
     user = st.session_state.profile
     st.markdown(
@@ -78,7 +73,7 @@ if "profile" in st.session_state and st.session_state.profile:
         <style>
         .tahoe-user-badge {{
             position: fixed;
-            top: 1.2em;
+            top: 4.5em;
             right: 2.2em;
             z-index: 9999;
             background: rgba(255,255,255,0.95);
@@ -111,7 +106,6 @@ if "profile" in st.session_state and st.session_state.profile:
         unsafe_allow_html=True,
     )
 
-# Tahoe theme: background image, color palette, mobile tweaks
 st.markdown(
     """
     <style>
@@ -151,14 +145,12 @@ if "feedback" not in st.session_state:
     st.session_state.feedback = ""
 if "show_hint" not in st.session_state:
     st.session_state.show_hint = False
-# Add flag for clearing code input
 if "clear_code_input" not in st.session_state:
     st.session_state.clear_code_input = False
-# Remove view_level for navigation
 
 # Login with profile cards
 if not st.session_state.profile:
-    st.markdown("<h3 style='text-align: center;'>Choose your Tahoe Adventurer:</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center;'>Choose your avatar:</h3>", unsafe_allow_html=True)
     num_profiles = len(FAMILY_PROFILES)
     num_cols = 3
     rows = (num_profiles + num_cols - 1) // num_cols
@@ -169,12 +161,10 @@ if not st.session_state.profile:
             if idx < num_profiles:
                 profile = FAMILY_PROFILES[idx]
                 with cols[col]:
-                    # Button without emojis
                     if st.button(f"{profile['display_name']}", key=f"profile_{profile['display_name']}", use_container_width=True):
                         st.session_state.profile = profile
                         st.session_state.username = profile["display_name"]
                         st.rerun()
-                    # Role with emoji1 and emoji2 on each side, separated by spaces
                     st.markdown(f"<div style='text-align:center; font-size:1.1em;'><b>{profile['emoji1']} {profile['role']} {profile['emoji2']}</b></div>", unsafe_allow_html=True)
                     st.markdown(f"<div style='text-align:center; color:#555;'>{profile['desc']}</div>", unsafe_allow_html=True)
                     st.markdown(f"<div style='text-align:center; font-size:0.9em; color:#888;'>Age: {profile['age']}</div>", unsafe_allow_html=True)
@@ -194,33 +184,30 @@ else:
     level_info = LEVELS[current_level]
     st.header(f"{level_info['puzzle']}")
     st.markdown("<div style='height: 1em'></div>", unsafe_allow_html=True)
-    # Use flag to clear code input
     code_input_value = "" if st.session_state.clear_code_input else None
     code = st.text_input(" ", key="code_input", value=code_input_value)
     if st.session_state.clear_code_input:
         st.session_state.clear_code_input = False
     st.markdown("<div style='height: 0.5em'></div>", unsafe_allow_html=True)
-    # Remove submit button, process on Enter
     show_hint_btn = st.button("Show Hint", key=f"show_hint_btn_{current_level}")
-    # Process code submission when code input changes and is not empty
     if code:
         if code == level_info["code"]:
             st.session_state.level += 1
             st.session_state.feedback = f"🎉 Nice work {st.session_state.username}! 🎉"
             st.session_state.show_hint = False
             st.session_state.celebrate = True
-            st.session_state.clear_code_input = True  # Set flag to clear input
+            st.session_state.clear_code_input = True 
             st.rerun()
         else:
             st.session_state.feedback = "Incorrect code. Try again!"
             st.session_state.celebrate = False
-            st.session_state.clear_code_input = True  # Set flag to clear input
+            st.session_state.clear_code_input = True 
             st.rerun()
     if st.session_state.feedback:
         if getattr(st.session_state, 'celebrate', False):
             st.snow()
             st.success(st.session_state.feedback)
-            st.session_state.celebrate = False  # Reset after showing
+            st.session_state.celebrate = False 
         else:
             st.info(st.session_state.feedback)
     if show_hint_btn:
