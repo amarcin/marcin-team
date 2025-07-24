@@ -1,0 +1,14 @@
+---
+alwaysApply: true
+---
+
+You're building a web app to track my family's progress through a series of Lake Tahoe-themed puzzles. Each level is unlocked by entering the correct code. Hints are available for each puzzle. Designed with a Tahoe-inspired look.
+
+
+Project Rules
+- Project management is done with `uv`. When adding new modules/libraries/packages, run `uv add <package>` as needed to keep the project working.
+- Use source `.venv/bin/activate && streamlit run main.py` when testing.
+- Reference the Streamlit docs often for best practices
+- You are responsible for owning the project. Keep iterating until the website works.
+- Do not write comments for the code for small changes.
+- Update the README constantly
