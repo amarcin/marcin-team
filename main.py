@@ -4,16 +4,16 @@ import streamlit as st
 
 # Tahoe puzzle levels and codes (placeholder, fill in real codes and hints later)
 LEVELS = [
-    {"puzzle": "What kind of trees are all around us at Tahoe?", "code": "jeffrey pines", "hint": "They're not Ponderosas."},
-    {"puzzle": "Puzzle 2 question goes here", "code": "test", "hint": "Hint for Puzzle 2"},
-    {"puzzle": "Puzzle 3 question goes here", "code": "test", "hint": "Hint for Puzzle 3"},
-    {"puzzle": "Puzzle 4 question goes here", "code": " ", "hint": "Hint for Puzzle 4"},
-    {"puzzle": "Puzzle 5 question goes here", "code": " ", "hint": "Hint for Puzzle 5"},
-    {"puzzle": "Puzzle 6 question goes here", "code": " ", "hint": "Hint for Puzzle 6"},
-    {"puzzle": "Puzzle 7 question goes here", "code": " ", "hint": "Hint for Puzzle 7"},
-    {"puzzle": "Puzzle 8 question goes here", "code": " ", "hint": "Hint for Puzzle 8"},
-    {"puzzle": "Puzzle 9 question goes here", "code": " ", "hint": "Hint for Puzzle 9"},
-    {"puzzle": "Puzzle 10 question goes here", "code": " ", "hint": "Hint for Puzzle 10"},
+    {"puzzle": "What kind of trees are all around us?", "code": "jeffrey pines", "hint": "They're not Ponderosas."},
+    {"puzzle": "Nice. Now, on the "________ to heaven", the number of a cubed triangle, you'll find the next clue.", "code": "test", "hint": "it's a song. and don't square the number"},
+    {"puzzle": "", "code": "test", "hint": "Hint for Puzzle 3"},
+    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 4"},
+    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 5"},
+    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 6"},
+    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 7"},
+    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 8"},
+    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 9"},
+    {"puzzle": "", "code": " ", "hint": "Hint for Puzzle 10"},
 ]
 
 # Family profiles
