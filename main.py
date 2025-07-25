@@ -148,8 +148,6 @@ if "feedback" not in st.session_state:
     st.session_state.feedback = ""
 if "show_hint" not in st.session_state:
     st.session_state.show_hint = False
-if "clear_code_input" not in st.session_state:
-    st.session_state.clear_code_input = False
 
 # Login with profile cards
 if not st.session_state.profile:
@@ -187,23 +185,25 @@ else:
     level_info = LEVELS[current_level]
     st.header(f"{level_info['puzzle']}")
     st.markdown("<div style='height: 1em'></div>", unsafe_allow_html=True)
-    code_input_value = "" if st.session_state.clear_code_input else None
-    code = st.text_input(" ", key="code_input", value=code_input_value)
-    if st.session_state.clear_code_input:
-        st.session_state.clear_code_input = False
-    st.markdown("<div style='height: 0.5em'></div>", unsafe_allow_html=True)
+
+    # --- FIX: Clear code_input before widget creation if needed ---
+    if st.session_state.get("reset_code_input", False):
+        st.session_state["code_input"] = ""
+        st.session_state["reset_code_input"] = False
+
+    code = st.text_input(" ", key="code_input")
     if code:
         if code.strip().lower() == level_info["code"].strip().lower():
             st.session_state.level += 1
-            st.session_state.feedback = f"🎉 Nice work {st.session_state.username}! 🎉"
             st.session_state.show_hint = False
             st.session_state.celebrate = True
-            st.session_state.clear_code_input = True 
+            st.session_state.feedback = ""
+            st.session_state["reset_code_input"] = True
             st.rerun()
         else:
             st.session_state.feedback = "Incorrect code. Try again!"
             st.session_state.celebrate = False
-            st.session_state.clear_code_input = True 
+            st.session_state["reset_code_input"] = True
             st.rerun()
     if st.session_state.feedback:
         if getattr(st.session_state, 'celebrate', False):
