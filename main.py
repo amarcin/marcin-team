@@ -6,14 +6,14 @@ import streamlit as st
 LEVELS = [
     {"puzzle": "What kind of trees are all around us?", "code": "jeffrey pines"},
     {"puzzle": "This place is special. Over this many million years has this lake been around.", "code": "2"},
-    {"puzzle": "", "code": "test"},
-    {"puzzle": "", "code": " "},
-    {"puzzle": "", "code": " "},
-    {"puzzle": "", "code": " "},
-    {"puzzle": "", "code": " "},
-    {"puzzle": "", "code": " "},
-    {"puzzle": "", "code": " "},
-    {"puzzle": "", "code": " "},
+    {"puzzle": "What's more, this lake is over one of these units above sea level.", "code": "mile"},
+    {"puzzle": "There's a building in New York that's pretty tall. If you stood it up in the lake, it wouldn't even reach the top of the water.", "code": "empire state building"},
+    {"puzzle": "One's green, called the other, and the other is very cold, called green. The water in this lake is colder than the other place.", "code": "iceland"},
+    {"puzzle": "What's the name of the people that came here first?", "code": "washoe"},
+    {"puzzle": "Here's a fun one. There's a famous author, with which Hayden is familiar, who accidentally set off a forest fire here.", "code": "mark twain"},
+    {"puzzle": "Take A Hike, Or don't, but it'll be worth Every second", "code": "tahoe"},
+    {"puzzle": "The more you take, the more you leave behind. What am I?", "code": "footstep"},
+    {"puzzle": "Four people need to cross a bridge at night. They have one flashlight, and the bridge can only hold two people at a time. The four people take 1, 2, 5, and 10 minutes to cross, respectively. If two people cross together, they move at the slower person’s pace. What's the least amount of minutes they can all get across?", "code": "17"},
 ]
 
 FAMILY_PROFILES = [
